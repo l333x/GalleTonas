@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GalleTona - Promociones</title>
+    <style>
+        body {
+            background-color: #a18262;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            width: 200px;
+            height: auto;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        
+        .cookie-gif {
+            width: 150px;
+            height: 150px;
+            margin: 30px 0;
+            animation: spin 5s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .promo {
+            background-color: #f5e2c5;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            color: #4a2c0f;
+        }
+        
+        h2 {
+            color: #6b4226;
+        }
+        
+        p {
+            color: #4a2c0f;
+            font-size: 18px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .coupon-img {
+            width: 300px;
+            height: auto;
+            margin: 15px 0;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .logo {
+                width: 150px;
+            }
+            
+            .cookie-gif {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .coupon-img {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a id="logoLink" href="#">
+            <img class="logo" src="LogoGalleta.png" alt="Logo GalleTona">
+        </a>
+        
+        <h1>GalleTona</h1>
+        <h2>Las galletas más deliciosas</h2>
+        
+        <img class="cookie-gif" src="Galletaicono.png" alt="Galleta girando">
+        
+        <div id="mainContent">
+            <p>¡Haz clic en nuestro logo para descubrir si has ganado un premio especial!</p>
+        </div>
+        
+        <div id="discountPromo" class="promo hidden">
+            <h2>¡Felicidades! Has ganado un descuento</h2>
+            <p>Presenta esta imagen a un vendedor autorizado para reclamar tu premio.</p>
+            <img class="coupon-img" src="Descuento.png" alt="Cupón de descuento">
+        
+        <div id="freeProductPromo" class="promo hidden">
+            <h2>¡Felicidades! Has ganado otro producto gratis</h2>
+            <p>Presenta esto a un vendedor autorizado para reclamar tu premio.</p>
+            <img class="coupon-img" src="Descuento.png" alt="Cupón de descuento">
+        </div>
+    </div>
+
+    <script>
+        const logoLink = document.getElementById('logoLink');
+        const mainContent = document.getElementById('mainContent');
+        const discountPromo = document.getElementById('discountPromo');
+        const freeProductPromo = document.getElementById('freeProductPromo');
+        
+        logoLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Ocultar contenido principal
+            mainContent.classList.add('hidden');
+            
+            // Mostrar una promoción aleatoria
+            const random = Math.random();
+            if (random < 0.5) {
+                discountPromo.classList.remove('hidden');
+                freeProductPromo.classList.add('hidden');
+            } else {
+                freeProductPromo.classList.remove('hidden');
+                discountPromo.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
